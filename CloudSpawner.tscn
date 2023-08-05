@@ -1,0 +1,45 @@
+[gd_scene load_steps=2 format=3 uid="uid://20ktr18x8cci"]
+
+[sub_resource type="GDScript" id="GDScript_0bly2"]
+script/source = "extends Node2D
+
+const CLOUD_SPAWN_INTERVAL = 2  # Adjust as needed
+const CLOUD_SPEED = 50  # Adjust as needed
+
+var cloudScene = preload(\"/Volumes/easystore/ColfaxGame/Cloud.tscn\")
+var cloudTimer = 0
+var rng = RandomNumberGenerator.new()
+
+func _ready():
+	rng.randomize()
+
+func _process(delta):
+	print(\"Processing...\")
+	if not cloudTimer:
+		cloudTimer = 0
+
+	cloudTimer += delta
+
+	# Spawn a new cloud if enough time has passed
+	if cloudTimer >= CLOUD_SPAWN_INTERVAL:
+		spawnCloud()
+		cloudTimer = 0
+
+	# Move all existing clouds
+	var clouds = get_tree().get_nodes_in_group(\"clouds\")
+	for cloud in clouds:
+		cloud.position.x += CLOUD_SPEED * delta
+
+		# Check if the cloud has moved off the screen
+		if cloud.position.x > get_viewport_rect().size.x:
+			cloud.queue_free()
+
+func spawnCloud():
+	var cloudInstance = cloudScene.instance()
+	cloudInstance.position = Vector2(0, rng.randf_range(0, get_viewport_rect().size.y))
+	add_child(cloudInstance)
+	cloudInstance.add_to_group(\"clouds\")
+"
+
+[node name="Node2D" type="Node2D"]
+script = SubResource("GDScript_0bly2")

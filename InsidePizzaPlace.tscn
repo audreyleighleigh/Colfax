@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dt5oqqhc7tsec"]
+
+[ext_resource type="Texture2D" uid="uid://diqeoxq36c63r" path="res://PizzaDude.png" id="1_837r6"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(69, -87)
+scale = Vector2(0.0969677, 0.0969677)
+texture = ExtResource("1_837r6")

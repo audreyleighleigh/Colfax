@@ -1,0 +1,117 @@
+[gd_scene load_steps=14 format=3 uid="uid://d3p2x3gws6cr3"]
+
+[ext_resource type="Texture2D" uid="uid://bp2nskgvkh8if" path="res://Sky.png" id="1_l6gal"]
+[ext_resource type="Texture2D" uid="uid://du30yjoxaaarl" path="res://Tree.png" id="1_p81xv"]
+[ext_resource type="Texture2D" uid="uid://v2q4cecdw8mk" path="res://Hill.png" id="1_u23te"]
+[ext_resource type="PackedScene" uid="uid://1f26g2lj8nfo" path="res://Cloud.tscn" id="2_b7ba6"]
+[ext_resource type="Texture2D" uid="uid://r0lw8nmgw3s7" path="res://BuildingWithSteampsd3.png" id="2_e6wy8"]
+[ext_resource type="Texture2D" uid="uid://ddfwv8dieuq2b" path="res://House3png.png" id="3_1hp6q"]
+[ext_resource type="Texture2D" uid="uid://d16y8nqwjc21v" path="res://meee.jpeg" id="5_466f6"]
+[ext_resource type="Script" path="res://Character.gd" id="6_ylgiq"]
+[ext_resource type="Texture2D" uid="uid://df1darcwhpyqa" path="res://pizzashop.png" id="7_2txfh"]
+[ext_resource type="Script" path="res://HouseDoor1.gd" id="7_8b21y"]
+[ext_resource type="Texture2D" uid="uid://bivaklsysb5qf" path="res://sidewalk.png" id="8_laerm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gj0fk"]
+size = Vector2(329.701, 412.622)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d07h2"]
+size = Vector2(1732.86, 1211.97)
+
+[node name="Main Outside" type="Node2D"]
+
+[node name="Sky" type="Sprite2D" parent="."]
+position = Vector2(-1321, -661)
+scale = Vector2(1.59601, 1.59601)
+texture = ExtResource("1_l6gal")
+
+[node name="Sky" type="Sprite2D" parent="Sky"]
+position = Vector2(2436.07, 126.566)
+scale = Vector2(1.16252, 1.02927)
+texture = ExtResource("1_l6gal")
+
+[node name="cloud1" parent="." instance=ExtResource("2_b7ba6")]
+position = Vector2(-1745, -1547)
+scale = Vector2(1.39859, 1.81854)
+
+[node name="hill2" type="Sprite2D" parent="."]
+position = Vector2(244, 326)
+texture = ExtResource("1_u23te")
+
+[node name="hill1" type="Sprite2D" parent="."]
+position = Vector2(2889, 278)
+scale = Vector2(1.1372, 1.1372)
+texture = ExtResource("1_u23te")
+
+[node name="Tree2" type="Sprite2D" parent="."]
+position = Vector2(1137, -132)
+scale = Vector2(0.934773, 0.934773)
+texture = ExtResource("1_p81xv")
+
+[node name="Tree" type="Sprite2D" parent="."]
+position = Vector2(2035, -275)
+scale = Vector2(0.934776, 0.934776)
+texture = ExtResource("1_p81xv")
+
+[node name="Building" type="Sprite2D" parent="."]
+position = Vector2(117, -63)
+scale = Vector2(0.662132, 0.662132)
+texture = ExtResource("2_e6wy8")
+
+[node name="House" type="Sprite2D" parent="."]
+position = Vector2(1804, -313)
+scale = Vector2(0.682436, 0.682436)
+texture = ExtResource("3_1hp6q")
+
+[node name="HouseDoor1" type="Area2D" parent="House"]
+script = ExtResource("7_8b21y")
+
+[node name="HouseDoor" type="CollisionShape2D" parent="House/HouseDoor1"]
+position = Vector2(-5.12866, 965.356)
+shape = SubResource("RectangleShape2D_gj0fk")
+
+[node name="Pizzashop" type="Sprite2D" parent="."]
+position = Vector2(3510, 66)
+scale = Vector2(0.579905, 0.571775)
+texture = ExtResource("7_2txfh")
+
+[node name="sidewalk" type="Sprite2D" parent="."]
+position = Vector2(381, 550)
+scale = Vector2(0.873682, 0.395544)
+texture = ExtResource("8_laerm")
+
+[node name="sidewalk" type="Sprite2D" parent="sidewalk"]
+position = Vector2(3544.77, 98.598)
+scale = Vector2(1.24705, 1.17522)
+texture = ExtResource("8_laerm")
+
+[node name="sidewalk2" type="Sprite2D" parent="."]
+position = Vector2(381, 550)
+scale = Vector2(0.873682, 0.395544)
+texture = ExtResource("8_laerm")
+
+[node name="sidewalk" type="Sprite2D" parent="sidewalk2"]
+position = Vector2(-3125.85, -83.4293)
+scale = Vector2(0.953278, 0.886109)
+texture = ExtResource("8_laerm")
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(-26, 289)
+scale = Vector2(0.126708, 0.126708)
+texture = ExtResource("5_466f6")
+script = ExtResource("6_ylgiq")
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(63.1373, -4624.81)
+offset = Vector2(2.08165e-12, 2.08165e-12)
+
+[node name="Area2D" type="Area2D" parent="Character"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Character/Area2D"]
+position = Vector2(1.70955, 664.651)
+shape = SubResource("RectangleShape2D_d07h2")
+
+[node name="cloud2" parent="." instance=ExtResource("2_b7ba6")]
+position = Vector2(-764, -1133)
+
+[connection signal="body_entered" from="House/HouseDoor1" to="House/HouseDoor1" method="_on_body_entered"]

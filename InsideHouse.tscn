@@ -1,0 +1,41 @@
+[gd_scene load_steps=7 format=3 uid="uid://ppo1ycd1nscd"]
+
+[ext_resource type="Texture2D" uid="uid://81wuxayubfk0" path="res://Room2psd.png" id="1_3bp7i"]
+[ext_resource type="Texture2D" uid="uid://bp2nskgvkh8if" path="res://Sky.png" id="1_3qkh1"]
+[ext_resource type="Texture2D" uid="uid://crl51i88krair" path="res://Table.png" id="2_8myka"]
+[ext_resource type="Texture2D" uid="uid://x8544ir57kyr" path="res://Chair3.png" id="3_l63ib"]
+[ext_resource type="Texture2D" uid="uid://d16y8nqwjc21v" path="res://meee.jpeg" id="4_mwbp6"]
+[ext_resource type="Texture2D" uid="uid://drpij4qramhk" path="res://ruthbader.jpeg" id="6_2h7p3"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="sky" type="Sprite2D" parent="."]
+position = Vector2(125, -113)
+scale = Vector2(1.50837, 1.50837)
+texture = ExtResource("1_3qkh1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3bp7i")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(-590, 306)
+scale = Vector2(0.529425, 0.545379)
+texture = ExtResource("2_8myka")
+
+[node name="Chair3" type="Sprite2D" parent="."]
+position = Vector2(-569, 233)
+scale = Vector2(0.444238, 0.444238)
+texture = ExtResource("3_l63ib")
+
+[node name="Character" type="Sprite2D" parent="."]
+position = Vector2(-28, 289)
+scale = Vector2(0.126708, 0.126708)
+texture = ExtResource("4_mwbp6")
+
+[node name="Camera2D" type="Camera2D" parent="Character"]
+position = Vector2(0, -2075.64)
+
+[node name="Ruthbader" type="Sprite2D" parent="."]
+position = Vector2(-587, -299)
+scale = Vector2(0.209896, 0.313281)
+texture = ExtResource("6_2h7p3")
